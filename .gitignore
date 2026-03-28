@@ -1,0 +1,4 @@
+/nxcurl
+/dist
+*.test
+.DS_Store
