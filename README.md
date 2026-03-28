@@ -36,7 +36,7 @@ Versioned filenames (e.g. `nxcurl_v0.0.2_linux_amd64.tar.gz`) and **`checksums.t
 ## [tars](https://github.com/chenchunaidu/tars) integration
 
 - Install the binary with **tars** using a formula (see `packaging/tars-formula.example.json` — fill `url` / `sha256` from your GitHub Release assets).
-- After install, run **`nxcurl catalog`**: it refreshes `~/.nxcurl/catalog/tools.json` and prints its path. Use that file in agent instructions, or fold its text into the workflow you already use with **`tars connect`** (for example, reference the path in your global rules).
+- After install, run **`nxcurl docs`**: it refreshes `~/.nxcurl/docs/SKILL.md` and **prints** the full agent-oriented skill (inputs, triggers, tool name per command) to stdout. Point agents at that output or the on-disk file, or fold it into your workflow with **`tars connect`** / project rules.
 - For agent turns, prefer **`nxcurl … --json`** so the model gets parseable status, headers, and body (plus `response_body_json` when the body is JSON).
 
 ## Commands
@@ -52,7 +52,7 @@ Versioned filenames (e.g. `nxcurl_v0.0.2_linux_amd64.tar.gz`) and **`checksums.t
 | `nxcurl import postman <collection.json>` | Same for Postman v2 |
 | `nxcurl env init <name>` | Create `~/.nxcurl/envs/<name>.json` |
 | `nxcurl env path <name>` | Print env file path |
-| `nxcurl catalog` | Refresh agent-oriented `tools.json` and print path |
+| `nxcurl docs` | Print agent-oriented `SKILL.md` (and write `~/.nxcurl/docs/SKILL.md`) |
 
 ## Environments
 
@@ -67,8 +67,8 @@ Versioned filenames (e.g. `nxcurl_v0.0.2_linux_amd64.tar.gz`) and **`checksums.t
 | `~/.nxcurl/history.jsonl` | Append-only request/response log |
 | `~/.nxcurl/envs/*.json` | Named environments |
 | `~/.nxcurl/collections/*/` | Imported / saved request JSON files |
-| `~/.nxcurl/catalog/tools.json` | Short agent-oriented metadata |
+| `~/.nxcurl/docs/SKILL.md` | Agent-oriented command reference (refreshed by `nxcurl docs`) |
 
 ## Status
 
-Early MVP: core run/history/env/import/catalog are in place; collection editing UI, auth helpers, and richer Postman/HAR edge cases can be extended incrementally.
+Early MVP: core run/history/env/import/docs are in place; collection editing UI, auth helpers, and richer Postman/HAR edge cases can be extended incrementally.

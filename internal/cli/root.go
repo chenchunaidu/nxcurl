@@ -31,5 +31,5 @@ var rootCmd = &cobra.Command{
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&flagEnv, "env", "e", "", "environment name (variables from ~/.nxcurl/envs/<name>.json)")
 	rootCmd.PersistentFlags().BoolVar(&flagJSON, "json", false, "machine-readable JSON output on stdout (for agents)")
-	rootCmd.AddCommand(runCmd, sendCmd, historyCmd, envCmd, importCmd, catalogCmd)
+	rootCmd.AddCommand(runCmd, sendCmd, historyCmd, envCmd, importCmd, docsCmd)
 }
